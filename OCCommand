@@ -1,0 +1,38 @@
+package com.Dylan.plugin;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import net.md_5.bungee.api.ChatColor;
+
+public class OcCommand implements CommandExecutor {
+	HashMap<String, Player> IGN = new HashMap<String, Player>();
+	ArrayList<String> HasOc = new ArrayList<String>();
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		
+		Player player = (Player) sender;
+		
+		if (args[0].equals(sender.getName()) && args[1].equals("create")) {
+			HasOc.add(sender.getName());
+			sender.sendMessage(ChatColor.GREEN + "Congrats " + ChatColor.RED + sender.getName() + ChatColor.GREEN + " you've got an oc now. Please configure your other options.");
+		} else if (args[0].equals(sender.getName()) && args[1].equals("Agility") && args[2].equals("2") && HasOc.contains(sender.getName())) {
+			sender.sendMessage(ChatColor.AQUA + "One step at a time " + player.getName());
+		} else if (args[0].equals(sender.getName()) && args[1].equals("delete")) {
+			HasOc.remove(sender.getName());
+		} else {
+			player.sendMessage("You need to make an oc first !");
+		}
+		
+
+		
+		return false;
+	}
+
+}
