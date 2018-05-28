@@ -1,0 +1,23 @@
+package com.Dylan.plugin;
+
+import org.bukkit.plugin.java.JavaPlugin;
+import org.fusesource.jansi.Ansi.Color;
+
+public class Main extends JavaPlugin {
+	
+	
+	@Override
+	public void onEnable() {
+		System.out.println(Color.GREEN + "[OC PLUGIN] Enabled");
+		getCommand("oc").setExecutor(new OcCommand());
+	}
+
+	
+	@Override
+	public void onDisable() {
+		System.out.println("[OC PLUGIN] DISABLED");
+		
+	}
+	
+
+}
